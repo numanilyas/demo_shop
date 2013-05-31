@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="span12">
+
+		<p id="notice"><%= notice %></p>
+		
+		<p>
+		  <b>Category:</b>
+		  <%= @product_sample.product_id %>
+		</p>
+		
+		<p>
+		  <b>Title:</b>
+		  <%= @product_sample.title %>
+		</p>
+		
+		<p>
+		  <b>Size:</b>
+		  <%= @product_sample.size %>
+		</p>
+		
+		<p>
+		  <b>Description:</b>
+		  <%= @product_sample.description %>
+		</p>
+		
+		<p>
+		  <b>Price:</b>
+		  <%= @product_sample.price %>
+		</p>
+		
+		<p>
+		  <b>Image</b>
+		  <%= image_tag @product_sample.image.url(:thumb) %>
+		  <%= image_tag @product_sample.image.url %>			
+		</p>
+		
+		<%= link_to 'Edit', edit_product_sample_path(@product_sample), :class => "btn btn-info" %> |
+		<%= link_to 'Back', product_samples_path, :class => "btn btn-inverse" %>
+		
+	</div>
+</div>
