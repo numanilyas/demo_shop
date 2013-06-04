@@ -44,10 +44,12 @@ div {
   color: green;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.field_with_errors > input {
+  //padding: 2px;
+  //background-color: red;
+  //display: table;
+  border: 2px solid #FF0000;
+  //border-radius: 7px;
 }
 
 #error_explanation {

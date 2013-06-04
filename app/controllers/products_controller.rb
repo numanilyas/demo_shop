@@ -1,8 +1,16 @@
+require 'digest/md5'
 class ProductsController < ApplicationController
+  
+  REALM = "Site Administrator"
+  USERS = {"site_admin" => Digest::MD5.hexdigest(["site_admin",REALM,"password"].join(":"))}  #ha1 digest password
+  
+  before_filter :authenticate
+  
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    session[:admin] = 'true'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +22,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @products = Product.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +34,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    @products = Product.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +45,14 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @products = Product.all
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(params[:product])
+    @products = Product.all    
 
     respond_to do |format|
       if @product.save
@@ -57,6 +69,7 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
+    @products = Product.all
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
@@ -80,4 +93,12 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+   private
+    def authenticate
+      authenticate_or_request_with_http_digest(REALM) do |username|
+        USERS[username]
+      end
+    end
+  
 end

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Embroideryshop</title>
+<head>  
+  <%= title :site => "Embroidery Shop",
+            :separator => "-",
+            :reverse => true,
+            :default => "Handmade Bullion Crests, Emblems, Church Embroidery, Christmas Collection" %>
+  <%= metamagic %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,9 +13,37 @@
 </head>
 <body>
 	<div class="container">
-		<%= render 'layouts/navigation'%>
-		<%= yield %>
-		<%= render 'layouts/footer'%>
+		<div class="row">
+			<div class="span12">
+				<%= render 'layouts/navigation'%>
+				<%= render 'layouts/carousel' if (params['controller'] == 'home' && (params['action'] == 'index' || params['action'] == 'pricing' || params['action'] == 'aboutus' || params['action'] == 'contactus' || params['action'] == 'howwework') || (params['controller'] == 'quotes' && params['action'] == 'new')) %>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span3">
+				<%= render 'layouts/sidebar' %>
+			</div>
+			<div class="span9">
+				<div style="background-color: #F5F5F5; border-radius: 1px">
+				<div id="breadcrumb">
+			    <%= breadcrumbs :pretext => "Site Navigation:",
+			                   :separator => "&rsaquo;",
+			                   :autoroot => true,
+			                   :show_root_alone => false,
+			                   :link_last => false,
+			                   :semantic => true	                    
+			 		%>
+				</div>
+				</div>
+				<%= yield %>						
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<%= render 'layouts/footer'%>
+			</div>
+		</div>
 	</div>
 
 </body>

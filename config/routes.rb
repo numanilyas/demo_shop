@@ -1,8 +1,13 @@
 Embroideryshop::Application.routes.draw do
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
   resources :quotes
 
 
-  resources :product_samples
+  resources :product_samples, :except => :show
+  match "/sample/:id", to: "product_samples#show", :as => :sample
+  #match "/productscrumbs/:id", to: "home#samples", :as => :productscrumbs
+  
 
 
   resources :products
@@ -11,7 +16,7 @@ Embroideryshop::Application.routes.draw do
   get "home/index"
   root :to => 'home#index'
   
-  match "/samples/:id", to: "home#samples"  
+  match "/samples/:id", to: "home#samples", :as => :samples
   match "/samples", to: "home#samples"
   match "/aboutus", to: "home#aboutus"
   match "/contactus", to: "home#contactus"

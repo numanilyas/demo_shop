@@ -3,8 +3,8 @@ class Quote < ActiveRecord::Base
   has_attached_file :image, :styles => { :thumb => "200x250>" }
   
   validates_attachment :image, :presence => true,
-  :content_type => { :content_type => ['image/jpeg', 'image/jpg', 'image/png']},
-  :size => { :in => 0..5000.kilobytes }
+  :content_type => { :content_type => ['image/jpeg', 'image/jpg', 'image/png'], :message => "is invalid, allowed formats are image/jpeg, image/jpg, image/png"},
+  :size => { :in => 0..5000.kilobytes, :message => "should be less than 5 MB" }
   
   validates :height, presence: true, length: { maximum: 15 }
   validates :width, presence: true, length: { maximum: 15 }
@@ -17,7 +17,7 @@ class Quote < ActiveRecord::Base
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence:   true,
-                    format:     { with: VALID_EMAIL_REGEX },
+                    format:     { with: VALID_EMAIL_REGEX, :message => "format is invalid" },
                     length: { maximum: 50 }
                       
   validates :address, length: { maximum: 50 }

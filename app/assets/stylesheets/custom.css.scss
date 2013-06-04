@@ -274,3 +274,32 @@ a {
   }
 }
 **/
+
+/* Breadcrumb */
+#breadcrumb, #breadcrumb div {
+ margin: 0;
+ padding: 0;
+ display: inline; /* Horizontal list */
+ list-style: none;
+}
+#breadcrumb div {
+ padding: 0 0.125em 0 0.25em;
+ //background: url(gt.gif) no-repeat right center;
+}
+#breadcrumb div a {
+ margin-right: 8px; /* Width of the arrow */
+ background: none;
+ color: #5A5A5A;
+ text-decoration: underline;
+ &:hover {
+    background-color: #0088CC;
+    color: #fff;
+ } 
+}
+#breadcrumb div .first {
+ margin-left: 0;
+ padding-left: 0;
+}
+#breadcrumb div .last {
+ background: none;
+}

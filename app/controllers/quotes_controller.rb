@@ -1,9 +1,16 @@
+require 'digest/md5'
 class QuotesController < ApplicationController
+  
+  REALM = "Site Administrator"
+  USERS = {"site_admin" => Digest::MD5.hexdigest(["site_admin",REALM,"password"].join(":"))}  #ha1 digest password
+  
+  before_filter :authenticate, :except => :new
+  
   # GET /quotes
   # GET /quotes.json
   def index
     @quotes = Quote.all
-
+    @products = Product.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @quotes }
@@ -14,6 +21,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1.json
   def show
     @quote = Quote.find(params[:id])
+    @products = Product.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,13 +44,14 @@ class QuotesController < ApplicationController
   # GET /quotes/1/edit
   def edit
     @quote = Quote.find(params[:id])
+    @products = Product.all
   end
 
   # POST /quotes
   # POST /quotes.json
   def create
     @quote = Quote.new(params[:quote])
-
+    @products = Product.all
     respond_to do |format|
       if @quote.save
         Notifier.quote_received(@quote).deliver
@@ -59,6 +68,7 @@ class QuotesController < ApplicationController
   # PUT /quotes/1.json
   def update
     @quote = Quote.find(params[:id])
+    @products = Product.all
 
     respond_to do |format|
       if @quote.update_attributes(params[:quote])
@@ -75,6 +85,7 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1.json
   def destroy
     @quote = Quote.find(params[:id])
+    @products = Product.all
     @quote.destroy
 
     respond_to do |format|
@@ -82,4 +93,12 @@ class QuotesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+    def authenticate
+      authenticate_or_request_with_http_digest(REALM) do |username|
+        USERS[username]
+      end
+      
+    end
 end

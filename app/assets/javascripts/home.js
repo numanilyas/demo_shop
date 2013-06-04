@@ -1,3 +1,4 @@
+/*
 $(document).ready(function(){
   $('#imagesDiv img')
     .wrap('<span style="display:inline-block"></span>')
@@ -5,3 +6,4 @@ $(document).ready(function(){
     .parent()
     .zoom();
 });
+*/

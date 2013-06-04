@@ -1,18 +1,7 @@
-<%= render 'layouts/carousel'%>
-
-<div class="row">
-  <div class="span3">
-  	<%= render 'layouts/sidebar'%>
-  </div>
-  <div class="span9">
-  	
-  	<div>
-  		<legend>Free Quote</legend>
-  		Please fill the below form and click on the Submit button at the bottom of the page. We will get back to you in 24 hours.
-		</div>
-		
-		<%= render 'form' %>
-		
-		
-  </div>
+<% title "Free Quote" %>
+<div>
+	<legend>Free Quote</legend>
+	Please fill the below form and click on the Submit button at the bottom of the page. We will get back to you in 24 hours. Fields in <strong>bold</strong> are mandatory.
 </div>
+
+<%= render 'form' %>
