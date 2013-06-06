@@ -1,4 +1,4 @@
-<% title @product.title %>
+<%provide(:title, @product.title)%>
 <% meta :description => @product.description,
         :keywords => @product.title
 %>
@@ -7,55 +7,28 @@
 <% @product_samples.each do |product_sample| %>
 	
 	  <li class="span3">
-	  	<div class="thumbnail">
-	  		<a href="#myModal<%=product_sample.id.to_s%>" data-toggle="modal" class="thumbnail" style="min-height: 250px">
-	      <%= image_tag product_sample.image.url(:thumb)%>
-	      </a>
+	  	<div class="thumbnail">	  		
+	      <%= link_to image_tag(product_sample.image.url(:thumb)), sample_url(product_sample), {:remote => true, :class => 'thumbnail thumbnailcustom', 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>	      
 		    <div class="caption">
           <h5><%= product_sample.title %></h5>
           <p>Size: <%= product_sample.size %></p>
     	    <p>Price: <%= product_sample.price %></p>
           <p align="center">
             <!-- a href="#myModal<%=product_sample.id.to_s%>" class="btn btn-inverse btn-block" data-toggle="modal">View More information</a -->
-            <%= link_to "View Details", "#myModal"+product_sample.id.to_s, :class => "btn btn-inverse btn-block", :data => {:toggle=>"modal"} %>
+            
+            <%= link_to "View Details", sample_url(product_sample), {:remote => true, :class => "btn btn-inverse btn-block", 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>
           </p>
         </div>
 	    </div>
-	  </li>
-	  
-	  <!-- Modal -->
-		<div id="myModal<%=product_sample.id.to_s%>" class="modal hide fade mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		    <h5>Modal header</h5>
-		  </div>
-		  <div class="modal-body">
-		  	<div class="container-fluid">
-		  		<div class="row-fluid">
-		  			<div class="span7" id="imagesDiv">
-					    <%= image_tag product_sample.image.url, :class => "img-polaroid", :size => "500x650"%>		    
-				    </div>
-				    <div class="span5">
-				    	<div class="well" style="height: 100%">
-				    		<h5>Description</h5>
-					    	<p><%=product_sample.description%></p>
-					    	<p><strong>Size: </strong><%=product_sample.size%></p>
-					    	<p><strong>Price: </strong><%=product_sample.price%></p>
-					    	<p align="center">
-	                <!-- a href="#" class="btn btn-inverse btn-block" data-toggle="modal">Free Quote</a -->
-	                <%= link_to "View Larger Image", sample_url(product_sample), :class => "btn btn-inverse btn-block"%>
-	                <%= link_to "Free Quote", newquote_url, :class => "btn btn-inverse btn-block"%>
-	              </p>
-					    </div>						    	
-			    	</div>
-			    </div>
-		    </div>
-		  </div>
-		  <!-- div class="modal-footer">				  	
-		    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		    <button class="btn btn-primary">Save changes</button>
-		  </div -->
-		</div>		  
-	
+	  </li>	
 <% end %>
 </ul>
+<!-- Modal -->
+<div id="myModal" class="modal hide fade mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <!-- div class="modal-footer">				  	
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div -->
+</div>		
+<%= will_paginate @product_samples %>

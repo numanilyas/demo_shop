@@ -10,7 +10,6 @@ class ProductSamplesController < ApplicationController
   # GET /product_samples.json
   def index
     @product_samples = ProductSample.all
-    @products = Product.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,12 +20,20 @@ class ProductSamplesController < ApplicationController
   # GET /product_samples/1
   # GET /product_samples/1.json
   def show
-    @products = Product.all
-    @first_id = Product.all.first.id
     @product_sample = ProductSample.find(params[:id])
-
+    if session[:recent_views].nil?
+      recent_views = {@product_sample.slug => @product_sample.title}
+      session[:recent_views] = recent_views
+    else
+      recent_views = session[:recent_views]
+      if recent_views[@product_sample.slug].nil?
+        recent_views[@product_sample.slug] = @product_sample.title
+      end
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @product_sample }
     end
   end
@@ -35,8 +42,7 @@ class ProductSamplesController < ApplicationController
   # GET /product_samples/new.json
   def new
     @product_sample = ProductSample.new
-    @products = Product.all
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @product_sample }
@@ -46,14 +52,12 @@ class ProductSamplesController < ApplicationController
   # GET /product_samples/1/edit
   def edit
     @product_sample = ProductSample.find(params[:id])
-    @products = Product.all
   end
 
   # POST /product_samples
   # POST /product_samples.json
   def create
     @product_sample = ProductSample.new(params[:product_sample])
-    @products = Product.all
 
     respond_to do |format|
       if @product_sample.save
@@ -70,7 +74,6 @@ class ProductSamplesController < ApplicationController
   # PUT /product_samples/1.json
   def update
     @product_sample = ProductSample.find(params[:id])
-    @products = Product.all
 
     respond_to do |format|
       if @product_sample.update_attributes(params[:product_sample])

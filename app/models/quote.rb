@@ -3,7 +3,7 @@ class Quote < ActiveRecord::Base
   has_attached_file :image, :styles => { :thumb => "200x250>" }
   
   validates_attachment :image, :presence => true,
-  :content_type => { :content_type => ['image/jpeg', 'image/jpg', 'image/png'], :message => "is invalid, allowed formats are image/jpeg, image/jpg, image/png"},
+  :content_type => { :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp'], :message => "is invalid, allowed formats are image/jpeg, image/jpg, image/png, image/gif, image/bmp"},
   :size => { :in => 0..5000.kilobytes, :message => "should be less than 5 MB" }
   
   validates :height, presence: true, length: { maximum: 15 }
@@ -26,5 +26,6 @@ class Quote < ActiveRecord::Base
   validates :city, length: { maximum: 30 }
   validates :zip, length: { maximum: 15 }
   
+  default_scope order: 'quotes.created_at DESC'
   
 end
