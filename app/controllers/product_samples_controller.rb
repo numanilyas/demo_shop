@@ -64,7 +64,7 @@ class ProductSamplesController < ApplicationController
 
     respond_to do |format|
       if @product_sample.save
-        format.html { redirect_to sample_url(@product_sample), notice: 'Product sample was successfully created.' }
+        format.html { redirect_to sample_url(@product_sample.product, @product_sample), notice: 'Product sample was successfully created.' }
         format.json { render json: @product_sample, status: :created, location: @product_sample }
       else
         format.html { render action: "new" }
@@ -80,7 +80,7 @@ class ProductSamplesController < ApplicationController
 
     respond_to do |format|
       if @product_sample.update_attributes(params[:product_sample])
-        format.html { redirect_to sample_url(@product_sample), notice: 'Product sample was successfully updated.' }
+        format.html { redirect_to sample_url(@product_sample.product, @product_sample), notice: 'Product sample was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
