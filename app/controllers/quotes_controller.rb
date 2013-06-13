@@ -2,7 +2,7 @@ require 'digest/md5'
 class QuotesController < ApplicationController
   
   REALM = "Site Administrator"
-  USERS = {"site_admin" => Digest::MD5.hexdigest(["site_admin",REALM,"password"].join(":"))}  #ha1 digest password
+  USERS = {"site_admin" => Digest::MD5.hexdigest([ENV["ADMIN_USER"],REALM,ENV["ADMIN_PASSWORD"]].join(":"))}  #ha1 digest password
   
   before_filter :authenticate, :except => [:new, :create]
       
