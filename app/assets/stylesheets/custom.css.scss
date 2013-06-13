@@ -1,4 +1,5 @@
-
+//$gridGutterWidth: 1px;
+//$linkColor:#5A5A5A; 
 @import "bootstrap";
 @import "bootstrap-responsive";
 
@@ -15,6 +16,8 @@
 
 .sidebar-nav {
         padding: 9px 0;
+        //background-color: #C8C8C8;
+        //color: #fff;
       }
 
     /* CUSTOMIZE THE NAVBAR
@@ -48,6 +51,7 @@
       font-size: 16px;
       font-weight: bold;
       text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+      color: #0088CC;
     }
 
     /* Navbar links: increase padding for taller navbar */
@@ -259,8 +263,10 @@
 .nav-list > li > a {
    &:hover {
     background-color: #0088CC;
+    color: #fff;
    } 
-   color: #5A5A5A;   
+   color: #0088CC;
+   //font-weight: bold;   
 }
 /****
 a {
@@ -302,4 +308,20 @@ a {
 }
 #breadcrumb div .last {
  background: none;
+}
+
+legend {
+  font-weight: bold;
+  color: #0088CC;
+  font-size: 16px;
+  margin-bottom: 5px;
+  
+}
+
+//a {
+//  color: #5A5A5A;
+//}
+
+dt {
+  color: #0088CC;
 }

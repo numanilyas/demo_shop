@@ -28,7 +28,7 @@ class ProductSamplesController < ApplicationController
       recent_views = session[:recent_views]
       if recent_views[@product_sample.slug].nil?
         recent_views[@product_sample.slug] = @product_sample.title
-      end
+      end    
     end
     
     respond_to do |format|
@@ -36,6 +36,9 @@ class ProductSamplesController < ApplicationController
       format.js
       format.json { render json: @product_sample }
     end
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = "The requested sample page is not found, please select the appropriate category under Samples from sidebar."
+    redirect_to :controller => 'home', :action => 'samples', :id => @first_id
   end
 
   # GET /product_samples/new

@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="span12">
 				<%= render 'layouts/navigation'%>
-				<%= render 'layouts/carousel' if (params['controller'] == 'home' && (params['action'] == 'index' || params['action'] == 'pricing' || params['action'] == 'aboutus' || params['action'] == 'contactus' || params['action'] == 'howwework') || (params['controller'] == 'quotes' && params['action'] == 'new')) %>
+				<%= render 'layouts/carousel' if (params['controller'] == 'home' && (params['action'] == 'index' || params['action'] == 'contactus' || params['action'] == 'routing_error' )) %>
 			</div>
 		</div>
 		

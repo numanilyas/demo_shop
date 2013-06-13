@@ -1,11 +1,12 @@
 Embroideryshop::Application.routes.draw do
   match 'sitemap.xml' => 'sitemaps#sitemap'
+  match 'sitemap' => 'home#sitemap'
 
   resources :quotes
 
 
   resources :product_samples, :except => :show
-  match "/sample/:id", to: "product_samples#show", :as => :sample
+  match "/sample/:product_id/:id", to: "product_samples#show", :as => :sample
   #match "/productscrumbs/:id", to: "home#samples", :as => :productscrumbs
   
 
@@ -16,14 +17,19 @@ Embroideryshop::Application.routes.draw do
   get "home/index"
   root :to => 'home#index'
   
+  
   match "/samples/:id", to: "home#samples", :as => :samples
-  match "/samples", to: "home#samples"
+  #match "/samples", to: "home#samples"
+  match "/samples", to: "home#products", :as => :productsamples
   match "/aboutus", to: "home#aboutus"
   match "/contactus", to: "home#contactus"
   match "/howwework", to: "home#howwework"
   match "/pricing", to: "home#pricing"
+  match "/faqs", to: "home#faqs"
+  match "/privacypolicy", to: "home#privacypolicy"
   
   match "/newquote", to: "quotes#new"
+  match '*unmatched_route', to: 'home#routing_error'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -81,4 +87,7 @@ Embroideryshop::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  
+  
+  
 end

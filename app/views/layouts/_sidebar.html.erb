@@ -1,6 +1,6 @@
 <div class="well sidebar-nav">
   <ul class="nav nav-list">
-    <li class="nav-header" style="background-color: #171717; color: #999999">Our Work</li>
+    <li class="nav-header" style="background-color: #171717; color: #999999">Samples</li>
     
     <% @products.each do |product| %>
       <li class="<%= 'active' if params[:id] == product.slug %>">	              
@@ -10,21 +10,20 @@
     
     <% if !session[:recent_views].nil? %>
     	<li class="nav-header" style="background-color: #171717; color: #999999">Recent Sample Views</li>
+    	<% count = 0 %>
     	<% session[:recent_views].each do |slug, title| %>
+    		<% if count == 10 %>
+    			<% break %>
+    		<% else %>
+    			<% count = count + 1 %>
+    		<% end %>
     		<li class="<%= 'active' if params[:id] == slug %>">
-    			<%= link_to title, sample_url(slug) %>
+    			<%= link_to title, sample_url(get_product_id(slug), slug) %>
     		</li>
     		
     	<% end %>
-    <% end %>
+    <% end %>    
     
-    <li class="nav-header" style="background-color: #171717; color: #999999">Project Name</li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
     <% if !session[:admin].nil? && session[:admin] == 'true' %>
 	    <li class="nav-header" style="background-color: #171717; color: #999999">Admin Tasks</li>
 	    <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'index' %>">	              
