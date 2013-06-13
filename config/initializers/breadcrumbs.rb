@@ -7,12 +7,17 @@ Gretel::Crumbs.layout do
      link "Home", root_path
   end
   
+  crumb :productsamples do
+    link "Samples", productsamples_path
+  end
+  
   crumb :samples do |samples|
     link samples.title, samples_path(samples)
+    parent :productsamples, samples
   end
   
   crumb :sample do |sample|
-    link sample.title, sample_path(sample)
+    link sample.title, sample_path(sample.product, sample)
     parent :samples, sample.product
   end
   
