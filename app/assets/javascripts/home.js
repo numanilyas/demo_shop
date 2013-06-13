@@ -7,3 +7,11 @@ $(document).ready(function(){
     .zoom();
 });
 */
+
+$(document).ready(function () {
+    $('.carousel').carousel({
+        interval: 7000
+    });
+
+    $('.carousel').carousel('cycle');
+});
