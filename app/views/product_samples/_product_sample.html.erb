@@ -6,7 +6,13 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span7" id="imagesDiv">
-			    <%= image_tag product_sample.image.url, :class => "img-polaroid", :size => "500x650"%>		    
+			    <%= image_tag product_sample.image.url, :class => "img-polaroid", :size => "500x650"%>
+    			<% if !@next_sample.nil? %>		          	
+          	<%= link_to '&rsaquo;'.html_safe, sample_url(@next_sample.product, @next_sample), {:remote => true, :id => "next", :class => "right carousel-control"} %>		          
+          <% end %>
+          <% if !@previous_sample.nil? %>
+          	<%= link_to '&lsaquo;'.html_safe, sample_url(@previous_sample.product, @previous_sample), {:remote => true, :id => "prev", :class => "left carousel-control"} %>		          
+          <% end %>
 		    </div>
 		    <div class="span5">
 		    	<div class="well" style="height: 100%">
@@ -18,6 +24,7 @@
 		          <!-- a href="#" class="btn btn-inverse btn-block" data-toggle="modal">Free Quote</a -->
 		          <%= link_to "View Larger Image", sample_url(product_sample.product.slug, product_sample), :class => "btn btn-inverse btn-block"%>
 		          <%= link_to "Free Quote", newquote_url, :class => "btn btn-inverse btn-block"%>
+		          
 		        </p>
 			    </div>						    	
 		  	</div>

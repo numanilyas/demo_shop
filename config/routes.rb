@@ -21,14 +21,14 @@ Embroideryshop::Application.routes.draw do
   match "/samples/:id", to: "home#samples", :as => :samples
   #match "/samples", to: "home#samples"
   match "/samples", to: "home#products", :as => :productsamples
-  match "/aboutus", to: "home#aboutus"
-  match "/contactus", to: "home#contactus"
-  match "/howwework", to: "home#howwework"
+  match "/about-us", to: "home#aboutus", :as => :aboutus
+  match "/contact-us", to: "home#contactus", :as => :contactus
+  match "/how-to-place-order", to: "home#howwework", :as => :howwework
   match "/pricing", to: "home#pricing"
   match "/faqs", to: "home#faqs"
-  match "/privacypolicy", to: "home#privacypolicy"
+  match "/privacy-policy", to: "home#privacypolicy", :as => :privacypolicy
   
-  match "/newquote", to: "quotes#new"
+  match "/free-quote", to: "quotes#new", :as => :newquote
   match '*unmatched_route', to: 'home#routing_error'
 
   # The priority is based upon order of creation:

@@ -21,6 +21,23 @@ class ProductSamplesController < ApplicationController
   # GET /product_samples/1.json
   def show
     @product_sample = ProductSample.find(params[:id])
+    
+    sample_index = @product_sample.product.product_samples.index(@product_sample)
+    
+    last_sample = @product_sample.product.product_samples.last
+    last_index = @product_sample.product.product_samples.index(last_sample)
+    
+    @next_sample = nil
+    @previous_sample = nil
+    
+    if sample_index != last_index
+      @next_sample = @product_sample.product.product_samples.at(sample_index+1)
+    end 
+    
+    if sample_index > 0
+      @previous_sample = @product_sample.product.product_samples.at(sample_index-1)
+    end
+    
     if session[:recent_views].nil?
       recent_views = {@product_sample.slug => @product_sample.title}
       session[:recent_views] = recent_views

@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   
   def samples    
     @product = Product.find(params[:id])
-    @product_samples = Product.find(params[:id]).product_samples.paginate(page: params[:page], :per_page => 6)
+    @product_samples = Product.find(params[:id]).product_samples.paginate(page: params[:page], :per_page => 9)
   rescue ActiveRecord::RecordNotFound
     flash[:error] = "The requested samples page is not found, please select the appropriate category under Samples from sidebar."
     redirect_to :action => 'samples', :id => @first_id 
