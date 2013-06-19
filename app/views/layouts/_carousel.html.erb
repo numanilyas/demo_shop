@@ -1,15 +1,25 @@
 <div class="row">
 	<div class="span12">
     <div id="myCarousel" class="carousel slide">
+    	<ol class="carousel-indicators">
+		    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		    <% index = 1 %>
+		    <% @products.each do |product| %>
+		    	<li data-target="#myCarousel" data-slide-to=<%=index%>></li>
+		    	<% index = index + 1 %>
+		    <% end %>
+		    
+		    
+		  </ol>
       <div class="carousel-inner">
         <div class="item active">
           <%= image_tag "Header.jpg", :class => "img-rounded"%>
           <div class="container">
             <div class="carousel-caption">
-              <h1>Embroidery Shop</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h2>Emblem Embroiders</h2>
+              <p class="lead">Home of Embroidered Emblems, Crests, Coat of Arms, Religious Embroidery</p>
               <!-- a class="btn btn-large btn-inverse" href="#">View Our Work</a -->
-              <%= link_to "How we Work", howwework_url, :class => "btn btn-large btn-inverse"%>
+              <%= link_to "View Samples", productsamples_url, :class => "btn btn-large btn-inverse"%>
               <%= link_to "Free Quote", newquote_url, :class => "btn btn-large btn-inverse"%>
               <!-- a class="btn btn-large btn-inverse" href="#">Free Quote</a -->
             </div>
@@ -21,7 +31,7 @@
 	          <%= image_tag product.image.url %>
 	          <div class="container">
 	            <div class="carousel-caption">
-	              <h1><%= product.title %></h1>
+	              <h2><%= product.title %></h2>
 	              <p class="lead"><%= product.description %></p>	              
 	              <%= link_to "View Samples", samples_path(product), :class => "btn btn-large btn-inverse"%>
               	<%= link_to "Free Quote", newquote_url, :class => "btn btn-large btn-inverse"%>
@@ -32,8 +42,8 @@
         <% end %>
         
       </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
 	</div>
 </div>

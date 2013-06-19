@@ -8,10 +8,10 @@
 				<div class="span7" id="imagesDiv">
 			    <%= image_tag product_sample.image.url, :class => "img-polaroid", :size => "500x650"%>
     			<% if !@next_sample.nil? %>		          	
-          	<%= link_to '&rsaquo;'.html_safe, sample_url(@next_sample.product, @next_sample), {:remote => true, :id => "next", :title => "Next", :class => "right carousel-control"} %>		          
+          	<%= link_to '&rsaquo;'.html_safe, sample_url(@next_sample.product, @next_sample), {:remote => true, :id => "next", :title => "Next Sample", :class => "right carousel-control"} %>		          
           <% end %>
           <% if !@previous_sample.nil? %>
-          	<%= link_to '&lsaquo;'.html_safe, sample_url(@previous_sample.product, @previous_sample), {:remote => true, :id => "prev", :title => "Previous", :class => "left carousel-control"} %>		          
+          	<%= link_to '&lsaquo;'.html_safe, sample_url(@previous_sample.product, @previous_sample), {:remote => true, :id => "prev", :title => "Previous Sample", :class => "left carousel-control"} %>		          
           <% end %>
 		    </div>
 		    <div class="span5">

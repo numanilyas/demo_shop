@@ -13,5 +13,5 @@ $(document).ready(function () {
         interval: 7000
     });
 
-    $('.carousel').carousel('cycle');
+    $('.carousel').carousel('cycle');  
 });

@@ -79,14 +79,18 @@
       position: relative;
       z-index: 9;
     }
+    
+    .carousel-indicators {
+      z-index: 10;
+    }
 
     .carousel-control {
-      height: 80px;
+      //height: 80px;
       margin-top: 0;
-      font-size: 120px;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-      background-color: transparent;
-      border: 0;
+      //font-size: 120px;
+      //text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      //background-color: transparent;
+      //border: 0;
       z-index: 10;
     }
 
@@ -109,7 +113,7 @@
       margin-top: 100px;
       margin-left: 60px;
     }
-    .carousel-caption h1,
+    .carousel-caption h2,
     .carousel-caption .lead {
       margin: 0;
       line-height: 1.25;
