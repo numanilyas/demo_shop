@@ -12,12 +12,14 @@
 	
 	  <li class="span3">
 	  	<div class="thumbnail">	  		
-	      <%= link_to image_tag(product_sample.image.url(:thumb)), sample_url(@product, product_sample), {:remote => true, :class => 'thumbnail thumbnailcustom', 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>	      
+	      <%= link_to image_tag(product_sample.image.url(:thumb), {:alt => product_sample.title}), sample_url(@product, product_sample), {:remote => true, :class => 'thumbnail thumbnailcustom', 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>	      
 		    <div class="caption">
-          <h5 style="color: #0088CC"><%= product_sample.title %></h5>
-          <p>Size: <%= product_sample.size %></p>
-    	    <p>Price: <%= product_sample.price %></p>
-          <p align="center">
+          <div class="customheight">
+          <h5 style="color: #0088CC; margin-top: 0px; margin-bottom: 0px;"><%= product_sample.title %></h5>
+        	<p style="margin-top: 0px; margin-bottom: 0px;">Size: <%= product_sample.size %></p>
+    	    <p style="margin-top: 0px; margin-bottom: 0px;">Price: <%= product_sample.price %></p>
+    	    </div>
+          <p align="center">          	
             <!-- a href="#myModal<%=product_sample.id.to_s%>" class="btn btn-inverse btn-block" data-toggle="modal">View More information</a -->
             
             <%= link_to "View Details", sample_url(@product, product_sample), {:remote => true, :class => "btn btn-inverse btn-block", 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>

@@ -1,6 +1,6 @@
 Embroideryshop::Application.routes.draw do
   match 'sitemap.xml' => 'sitemaps#sitemap'
-  match 'sitemap' => 'home#sitemap'
+  match 'site-map' => 'home#sitemap', :as => :sitemap
 
   resources :quotes
 

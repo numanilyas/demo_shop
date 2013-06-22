@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  #unless ActionController::Base.consider_all_requests_local
+  #if RAILS_ENV == 'production'
+    rescue_from Exception, :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
+    rescue_from ActionController::RoutingError, :with => :render_not_found
+    rescue_from ActionController::UnknownController, :with => :render_not_found
+    rescue_from ActionController::UnknownAction, :with => :render_not_found
+  #end
+  #end 
+  
   before_filter :set_first_product_id
   
   def set_first_product_id    
@@ -8,6 +18,19 @@ class ApplicationController < ActionController::Base
     if @products.nil?
       @products = []
     end           
+  end
+  
+  private
+
+  def render_not_found(exception)
+    #log_error(exception)
+    render :template => "home/routing_error", :status => 404
+  end
+
+  def render_error(exception)
+    #log_error(exception)
+    logger.fatal "Application level error #{exception.inspect}"
+    render :template => "errors/application_error", :status => 500, layout: false
   end
   
   #rescue_from Exception, :with => :rescue_all_exceptions #if RAILS_ENV == 'production'

@@ -53,9 +53,9 @@ class ProductSamplesController < ApplicationController
       format.js
       format.json { render json: @product_sample }
     end
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = "The requested sample page is not found, please select the appropriate category under Samples from sidebar."
-    redirect_to :controller => 'home', :action => 'samples', :id => @first_id
+  #rescue ActiveRecord::RecordNotFound
+    #flash[:error] = "The requested sample is not found, please select the appropriate samples below to see invidual sample in each."
+    #redirect_to :controller => 'home', :action => 'products', :status => 404
   end
 
   # GET /product_samples/new
