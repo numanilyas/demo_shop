@@ -120,9 +120,14 @@
     .carousel-caption .lead {
       margin: 0;
       line-height: 1.25;
-      //color: #fff;
+      
       text-shadow: 1px 5px 5px #000;
     }
+    .carousel-caption .lead {
+      color: #999999;
+    }
+    
+    
     .carousel-caption .btn {
       margin-top: 10px;
     }
