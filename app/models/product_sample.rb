@@ -5,7 +5,7 @@ class ProductSample < ActiveRecord::Base
   
   validates_attachment :image, :presence => true,
   :content_type => { :content_type => ['image/jpeg', 'image/jpg', 'image/png']},
-  :size => { :in => 0..5000.kilobytes }
+  :size => { :in => 0..5000.kilobytes }, :on => :create
   
   validates :title, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false } 
   validates :description, presence: true, length: { maximum: 300 }
