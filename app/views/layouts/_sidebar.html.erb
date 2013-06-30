@@ -7,7 +7,7 @@
       	<%= link_to product.title, samples_path(product) %>
       </li>
     <% end %>
-    
+    <!--
     <% if !session[:recent_views].nil? %>
     	<li class="nav-header" style="background-color: #171717; color: #999999">Recent Sample Views</li>
     	<% count = 0 %>
@@ -22,7 +22,8 @@
     		</li>
     		
     	<% end %>
-    <% end %>    
+    <% end %>
+    -->    
     
     <% if !session[:admin].nil? && session[:admin] == 'true' %>
 	    <li class="nav-header" style="background-color: #171717; color: #999999">Admin Tasks</li>
