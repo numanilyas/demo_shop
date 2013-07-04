@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603164342) do
+ActiveRecord::Schema.define(:version => 20130702003618) do
 
   create_table "product_samples", :force => true do |t|
     t.integer  "product_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130603164342) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "slug"
+    t.integer  "sort_index"
   end
 
   add_index "product_samples", ["slug"], :name => "index_product_samples_on_slug", :unique => true
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130603164342) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "slug"
+    t.integer  "sort_index"
   end
 
   add_index "products", ["slug"], :name => "index_products_on_slug", :unique => true

@@ -1,6 +1,6 @@
 class ProductSample < ActiveRecord::Base
   extend FriendlyId
-  attr_accessible :product_id, :description, :price, :size, :title, :image
+  attr_accessible :product_id, :description, :price, :size, :title, :image, :sort_index
   has_attached_file :image, :styles => { :thumb => "200x250>" }
   
   validates_attachment :image, :presence => true,
@@ -15,5 +15,11 @@ class ProductSample < ActiveRecord::Base
   
   friendly_id :title, :use => :slugged
   validates_presence_of :slug  
+  
+  validates_numericality_of :index, :greater_than => 0
+  
+  default_scope :order => 'sort_index DESC'
+  
+  before_save {|product| product.index = 0 if product.index.nil?}
   
 end

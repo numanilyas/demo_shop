@@ -7,6 +7,7 @@
     <th>Category</th>
     <th>Title</th>
     <th>Size</th>
+    <th>Sort Index</th>
     <th>Description</th>
     <th>Price</th>
     <th>Image</th>
@@ -21,6 +22,7 @@
     <td><%= product_sample.product.title %></td>
     <td><%= product_sample.title %></td>
     <td><%= product_sample.size %></td>
+    <td><%= product_sample.sort_index %></td>
     <td><%= product_sample.description %></td>
     <td><%= product_sample.price %></td>
     <td><%= image_tag product_sample.image.url(:thumb) %></td>
