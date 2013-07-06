@@ -10,7 +10,7 @@ class Quote < ActiveRecord::Base
   validates :width, presence: true, length: { maximum: 15 }
   validates :quantity, presence: true, length: { maximum: 15 }
   validates :requiredate, length: { maximum: 20 }
-  validates :comments, length: { maximum: 300 }
+  validates :comments, length: { maximum: 600 }
   
   
   validates :name, presence: true, length: { maximum: 30 }

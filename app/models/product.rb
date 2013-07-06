@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   :size => { :in => 0..5000.kilobytes }, :on => :create
   
   validates :title, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
-  validates :description, presence: true, length: { maximum: 300 }
+  validates :description, presence: true, length: { maximum: 600 }
   
   has_many :product_samples, dependent: :destroy
   
@@ -19,6 +19,6 @@ class Product < ActiveRecord::Base
   
   default_scope :order => 'sort_index DESC'
   
-  before_save {|product| product.index = 0 if product.index.nil?}
+  before_save {|product| product.sort_index = 0 if product.sort_index.nil?}
   
 end
