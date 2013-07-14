@@ -6,7 +6,7 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span7" id="imagesDiv">
-			    <%= image_tag product_sample.image.url, :class => "img-polaroid", :size => "500x650", :alt => product_sample.title%>
+			    <%= image_tag product_sample.image.url, :class => "img-polaroid imageheight", :alt => product_sample.title%>
     			<% if !@next_sample.nil? %>		          	
           	<%= link_to '&rsaquo;'.html_safe, sample_url(@next_sample.product, @next_sample), {:remote => true, :id => "next", :title => "Next Sample", :class => "right carousel-control"} %>		          
           <% end %>
