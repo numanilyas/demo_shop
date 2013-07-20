@@ -8,12 +8,12 @@
       </li>
     <% end %>
     
-    <!-- 
+     
     <% if !session[:recent_views].nil? %>
     	<li class="nav-header" style="background-color: #171717; color: #999999">Recent Sample Views</li>
     	<% count = 0 %>
     	<% session[:recent_views].each do |slug, title| %>
-    		<% if count == 10 %>
+    		<% if count == 5 %>
     			<% break %>
     		<% else %>
     			<% count = count + 1 %>
@@ -24,7 +24,7 @@
     		
     	<% end %>
     <% end %>    
-    -->
+    
     <% if !session[:admin].nil? && session[:admin] == 'true' %>
 	    <li class="nav-header" style="background-color: #171717; color: #999999">Admin Tasks</li>
 	    <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'index' %>">	              
