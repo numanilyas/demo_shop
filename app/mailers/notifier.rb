@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "Emblem Embroiders <info@embroideryshop.com>"
+  default from: "Emblem Embroiders <info@emblemembroiders.com>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
