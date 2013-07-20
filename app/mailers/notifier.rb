@@ -9,6 +9,10 @@ class Notifier < ActionMailer::Base
   def quote_received(quote)
     @quote = quote
 
-    mail to: quote.email, :subject => "Your quote received"
+    mail to: quote.email, :subject => "Your Quote Received"
+  end
+  
+  def quote_notification
+    mail to: "numan.ilyas@gmail.com", :subject => "New Quote Received"
   end
 end
