@@ -1,5 +1,5 @@
 <%provide(:title, @product.title)%>
-<% meta :description => @product.description,
+<% meta :description => trim_meta_description(@product.description),
         :keywords => @product.title
 %>
 <% breadcrumb :samples, @product %>

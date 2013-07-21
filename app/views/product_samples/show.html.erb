@@ -1,5 +1,5 @@
 <%provide(:title, @product_sample.title)%>
-<% meta :description => @product_sample.description,
+<% meta :description => trim_meta_description(@product_sample.description),
         :keywords => @product_sample.title
 %>
 <% breadcrumb :sample, @product_sample %>
@@ -8,7 +8,8 @@
   <%= @product_sample.product_id %>
 </p -->
 
-<legend><%= @product_sample.title %></legend>
+<h1 style="margin-bottom: 10px"><%= @product_sample.title %></h1>
+<hr style="margin-top: 2px; margin-bottom: 2px"/>
 
 <p>
   <%= @product_sample.description %>
