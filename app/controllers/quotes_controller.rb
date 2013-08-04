@@ -51,8 +51,8 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        Notifier.quote_received(@quote).deliver
-        Notifier.quote_notification.deliver
+        #Notifier.quote_received(@quote).deliver
+        #Notifier.quote_notification.deliver
         format.html { redirect_to root_url, notice: 'Quote has been successfully saved, we will get back to you in 24 hours.' }
         format.json { render json: @quote, status: :created, location: @quote }        
       else
