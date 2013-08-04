@@ -9,8 +9,7 @@ Embroideryshop::Application.configure do
   
   config.action_mailer.smtp_settings = {
     :address => ENV['SMTP'],
-    :port => ENV['SMTP_PORT'],
-    #:domain => "www.embroideryshop.com", 
+    :port => ENV['SMTP_PORT'],     
     :authentication => ENV['SMTP_AUTHENTICATION'],
     :user_name => ENV['SMTP_USER'],
     :password =>  ENV['SMTP_PASSWORD'],
