@@ -20,7 +20,7 @@ end
 gem 'gretel'
 gem 'metamagic'
 gem 'friendly_id', '~> 4.0.9'
-gem 'dynamic_sitemaps'
+gem "dynamic_sitemaps", "~> 2.0.0"
 # Headliner
 # rails plugin install git://github.com/mokolabs/headliner.git
 
