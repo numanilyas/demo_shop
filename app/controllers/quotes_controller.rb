@@ -51,6 +51,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
+        #sending notifications
         Notifier.quote_received(@quote).deliver
         Notifier.quote_notification.deliver
         format.html { redirect_to root_url, notice: 'Quote has been successfully saved, we will get back to you in 24 hours.' }
