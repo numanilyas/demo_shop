@@ -13,6 +13,6 @@ class Notifier < ActionMailer::Base
   end
   
   def quote_notification
-    mail to: "numan.ilyas@gmail.com", :subject => "New Quote Received"
+    mail to: "emblemembroiders@gmail.com", :subject => "New Quote Received"
   end
 end
