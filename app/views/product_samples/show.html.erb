@@ -24,11 +24,23 @@
   <b>Price:</b>
   <%#= @product_sample.price %>
 </p -->
-
+<div id="imagesDiv">
+	<p align="left">		          
+    Please submit a <strong><%= link_to "Free Quote", newquote_url%></strong> with your sample image or email us at <a href="mailto:info@emblemembroiders.com">info@emblemembroiders.com</a>.      
+		<br />			          
+    Please see all samples for <strong><%= link_to @product_sample.product.title, samples_path(@product_sample.product)%></strong>.
+  </p>		          
+	
 <p>		  
-  <%= image_tag @product_sample.image.url, :class => "img-polaroid"%>		  			
+  <%= image_tag @product_sample.image.url, :class => "img-polaroid"%>
+  <% if !@next_sample.nil? %>		          	
+  	<%= link_to '&rsaquo;'.html_safe, sample_url(@next_sample.product, @next_sample), {:id => "next", :title => @next_sample.title, :class => "right carousel-control"} %>		          
+  <% end %>
+  <% if !@previous_sample.nil? %>
+  	<%= link_to '&lsaquo;'.html_safe, sample_url(@previous_sample.product, @previous_sample), {:id => "prev", :title => @previous_sample.title, :class => "left carousel-control"} %>		          
+  <% end %>		  			
 </p>
-
+</div>
 <!-- If Admin then show below buttons -->
 <% if !session[:admin].nil? && session[:admin] == 'true' %>
 	<%= link_to 'Edit', edit_product_sample_path(@product_sample), :class => "btn btn-info" %> |
