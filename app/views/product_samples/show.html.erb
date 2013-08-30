@@ -15,15 +15,17 @@
   <%= @product_sample.description %>
 </p>
 
+<% if !(@product_sample.size.nil? || @product_sample.size == "") %>
 <p>
   <b>Size:</b>
   <%= @product_sample.size %>
 </p>		
-
-<!-- p>
+<% end %>
+<p>
   <b>Price:</b>
+  As low as $5.00 for 3" x 3" patch
   <%#= @product_sample.price %>
-</p -->
+</p>
 <div id="imagesDiv">
 	<p align="left">		          
     Please submit a <strong><%= link_to "Free Quote", newquote_url%></strong> with your sample image or email us at <a href="mailto:info@emblemembroiders.com">info@emblemembroiders.com</a>.      

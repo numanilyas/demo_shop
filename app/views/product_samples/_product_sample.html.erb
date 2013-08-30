@@ -18,7 +18,13 @@
 		    	<div class="well" style="height: 100%">
 		    		<h5>Description</h5>
 			    	<p><%=product_sample.description%></p>
-			    	<p><strong>Size: </strong><%=product_sample.size%></p>
+			    	<% if !(@product_sample.size = "" || @product_sample.size.nil?) %>
+			    		<p><strong>Size: </strong><%=product_sample.size%></p>
+			    	<% end %>
+			    	<p>
+						  <b>Price:</b>
+						  As low as $5.00 for 3" x 3" patch
+						</p>
 			    	<!-- p><strong>Price: </strong><%#=product_sample.price%></p -->
 			    	<p align="center">
 		          <!-- a href="#" class="btn btn-inverse btn-block" data-toggle="modal">Free Quote</a -->

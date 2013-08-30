@@ -20,7 +20,10 @@
 		    <div class="caption">
           <div class="customheight">
           <h5 style="color: #0088CC; margin-top: 0px; margin-bottom: 0px;"><%= product_sample.title %></h5>
-        	<p style="margin-top: 0px; margin-bottom: 0px;">Size: <%= product_sample.size %></p>
+        	<% if !(product_sample.size.nil? || product_sample.size == "" ) %>
+        		<p style="margin-top: 0px; margin-bottom: 0px;">Size: <%= product_sample.size %></p>
+        	<% end %>
+        	
     	    <!-- p style="margin-top: 0px; margin-bottom: 0px;">Price: <%#= product_sample.price %></p -->
     	    </div>
           <p align="center">          	
