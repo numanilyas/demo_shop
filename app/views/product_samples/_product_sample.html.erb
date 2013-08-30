@@ -18,7 +18,7 @@
 		    	<div class="well" style="height: 100%">
 		    		<h5>Description</h5>
 			    	<p><%=product_sample.description%></p>
-			    	<% if !(@product_sample.size = "" || @product_sample.size.nil?) %>
+			    	<% if !(product_sample.size.nil? || product_sample.size == "" ) %>
 			    		<p><strong>Size: </strong><%=product_sample.size%></p>
 			    	<% end %>
 			    	<p>
