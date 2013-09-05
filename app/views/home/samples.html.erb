@@ -11,9 +11,10 @@
 <h1 ><%= @product.title %></h1>
 <hr/>
 <p><%= @product.description %></p>
+<div>
+	<% counter = 0 %>
 <ul class="thumbnails">
-<% @product_samples.each do |product_sample| %>
-	
+<% @product_samples.each do |product_sample| %>		
 	  <li class="span3">
 	  	<div class="thumbnail">	  		
 	      <%= link_to image_tag(product_sample.image.url(:thumb), {:alt => product_sample.title}), sample_url(@product, product_sample), {:remote => true, :class => 'thumbnail thumbnailcustom', 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>	      
@@ -33,9 +34,15 @@
           </p>
         </div>
 	    </div>
-	  </li>	
+	  </li>
+	  <% counter = counter + 1%>
+		<% if counter%3 == 0 %>
+			<% counter = 0 %>
+			</ul></div><div><ul class="thumbnails">
+		<% end %>	
 <% end %>
 </ul>
+</div>
 <!-- Modal -->
 <div id="myModal" class="modal hide fade mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   
