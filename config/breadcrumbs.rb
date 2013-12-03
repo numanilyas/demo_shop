@@ -1,6 +1,6 @@
 # Remember to restart your application after editing this file.
 
-Gretel::Crumbs.layout do
+#Gretel::Crumbs.layout do
   # Example crumbs:
   
   crumb :root do
@@ -31,4 +31,4 @@ Gretel::Crumbs.layout do
   #   parent :project_issues, issue.project
   # end
 
-end
+#end
