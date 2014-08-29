@@ -21,14 +21,14 @@
   <%= @product_sample.size %>
 </p>		
 <% end %>
-<p>
+<!-- p>
   <b>Price:</b>
   Please see <%= link_to "Pricing", pricing_url%>
   <%#= @product_sample.price %>
-</p>
+</p -->
 <div id="imagesDiv">
-	<p align="left">		          
-    Please submit a <strong><%= link_to "Free Quote", newquote_url%></strong> with your sample image or email us at <a href="mailto:info@emblemembroiders.com">info@emblemembroiders.com</a>.      
+	<p align="left">
+		For pricing please <strong><%= link_to "Request Quote", "mailto:info@emblemembroiders.com?subject=Quote for "+ @product_sample.title+"&body=%0D%0A%0D%0A%0D%0A"+sample_url(@product_sample.product, @product_sample)%></strong> or if you've your own image then submit <strong><%= link_to "Free Quote", newquote_url%></strong> with your sample image or email us at <a href="mailto:info@emblemembroiders.com">info@emblemembroiders.com</a>.      
 		<br />			          
     Please see all samples for <strong><%= link_to @product_sample.product.title, samples_path(@product_sample.product)%></strong>.
   </p>		          

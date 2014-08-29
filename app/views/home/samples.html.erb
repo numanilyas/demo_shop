@@ -31,6 +31,7 @@
             <!-- a href="#myModal<%=product_sample.id.to_s%>" class="btn btn-inverse btn-block" data-toggle="modal">View More information</a -->
             
             <%= link_to "View Details", sample_url(@product, product_sample), {:remote => true, :class => "btn btn-inverse btn-block", 'data-toggle' => 'modal', 'data-target' => "#myModal", 'data-backdrop' => true, 'data-keyboard' => true} %>
+            <%= link_to "Request Quote", "mailto:info@emblemembroiders.com?subject=Quote for "+ product_sample.title+"&body=%0D%0A%0D%0A%0D%0A"+sample_url(product_sample.product, product_sample), :class => "btn btn-inverse btn-block"%>
           </p>
         </div>
 	    </div>

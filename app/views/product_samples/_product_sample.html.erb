@@ -22,14 +22,15 @@
 			    		<p><strong>Size: </strong><%=product_sample.size%></p>
 			    	<% end %>
 			    	<p>
-						  <b>Price:</b>
-						  Please see <%= link_to "Pricing", pricing_url%>
+			    		For pricing please <strong><%= link_to "Request Quote", "mailto:info@emblemembroiders.com?subject=Quote for "+ @product_sample.title+"&body=%0D%0A%0D%0A%0D%0A"+sample_url(@product_sample.product, product_sample)%> </strong>
+						  <!-- b>Price:</b>
+						  Please see <%#= link_to "Pricing", pricing_url% -->
 						</p>
 			    	<!-- p><strong>Price: </strong><%#=product_sample.price%></p -->
 			    	<p align="center">
 		          <!-- a href="#" class="btn btn-inverse btn-block" data-toggle="modal">Free Quote</a -->
 		          <%= link_to "View Larger Image", sample_url(product_sample.product.slug, product_sample), :class => "btn btn-inverse btn-block"%>
-		          <%= link_to "Free Quote", newquote_url, :class => "btn btn-inverse btn-block"%>
+		          <%= link_to "Request Quote", "mailto:info@emblemembroiders.com?subject=Quote for "+ product_sample.title+"&body=%0D%0A%0D%0A%0D%0A"+sample_url(product_sample.product, product_sample), :class => "btn btn-inverse btn-block"%>
 		          
 		        </p>
 			    </div>						    	
